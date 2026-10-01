@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "agent-platform-poc"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115.11,<1", "auth0-fastapi-api==1.0.0b9", "httpx>=0.28,<1",
+  "python-dotenv>=1,<2", "uvicorn>=0.35,<1", "mcp==2.3.0", "jsonschema>=4,<5",
+  "litellm>=1.80,<2", "cryptography>=44"
+]
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "pytest-asyncio>=1,<2", "ruff>=0.12,<1"]
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+[tool.setuptools.packages.find]
+include = ["platform_app*"]
+[tool.setuptools.package-data]
+platform_app = ["static/*"]
